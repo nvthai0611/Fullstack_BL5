@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Call API Example</title>
+  </head>
+  <body>
+    <h1>API Call Result:</h1>
+    <pre id="output">Loading...</pre>
+    <script>
+      fetch("http://localhost:9999") // thay "your-endpoint" bằng đường dẫn API thật
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(
+              "Network response was not ok " + response.statusText
+            );
+          }
+          return response.json(); // hoặc .text() nếu bạn nhận dữ liệu dạng text
+        })
+        .then((data) => {
+          document.getElementById("output").textContent = JSON.stringify(
+            data,
+            null,
+            2
+          );
+        })
+        .catch((error) => {
+          document.getElementById("output").textContent = "Error: " + error;
+        });
+    </script>
+  </body>
+</html>
