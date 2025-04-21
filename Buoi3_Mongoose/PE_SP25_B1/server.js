@@ -10,7 +10,8 @@ app.use(cors());
 
 app.use(bodyParser.json()); // express.json()
 app.use(bodyParser.urlencoded({ extended: true })); // express.urlencoded
-app.use("/", productRouter)
+app.use("/api", productRouter);
+
 connectDb();
 const PORT = process.env.PORT || 9999;
 app.listen(PORT, () => {
